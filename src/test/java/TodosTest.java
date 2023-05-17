@@ -89,4 +89,17 @@ public class TodosTest {
         Task[] actual = todos.search("встреча");
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldSearchForOneMatch() {
+        Task[] expected1 = {simple};
+        Task[] actual1 = todos.search("корм для кошки");
+        Task[] expected2 = {meeting};
+        Task[] actual2 = todos.search("Разбор задач");
+        Task[] expected3 = {epic};
+        Task[] actual3 = todos.search("Помыть посуду");
+        Assertions.assertArrayEquals(expected1, actual1);
+        Assertions.assertArrayEquals(expected2, actual2);
+        Assertions.assertArrayEquals(expected3, actual3);
+    }
 }
