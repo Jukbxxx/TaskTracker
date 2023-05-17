@@ -70,4 +70,23 @@ public class TodosTest {
         Task[] actual = todos.search("соцмедиа");
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldSearchForSeveralTasks() {
+        SimpleTask simpleTask = new SimpleTask(43, "Забронировать билеты");
+        String[] subtasks = {"Посмотреть билеты", "Направить документы для визы", "Забронировать отель"};
+        Epic epic1 = new Epic(84, subtasks);
+        todos.add(simpleTask);
+        todos.add(epic1);
+        Task[] expected = {epic, simpleTask, epic1};
+        Task[] actual = todos.search("билеты");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchIfNoMatches(){
+        Task[] expected = {};
+        Task[] actual = todos.search("встреча");
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
