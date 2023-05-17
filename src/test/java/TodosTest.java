@@ -84,7 +84,7 @@ public class TodosTest {
     }
 
     @Test
-    public void shouldSearchIfNoMatches(){
+    public void shouldSearchIfNoMatches() {
         Task[] expected = {};
         Task[] actual = todos.search("встреча");
         Assertions.assertArrayEquals(expected, actual);
